@@ -1,7 +1,7 @@
 ---
 title: Travis CI 自动部署 Hexo 博客到 Github Pages
 date: 2019-10-11 09:52:35
-tags: Travis, Hexo, Github
+tags: Travis Hexo Github
 Categories: 技术
 ---
 
@@ -13,7 +13,7 @@ Categories: 技术
 
 Hexo 安装好了，Github Pages 也创建好了，按照 Hexo 的官方文档还想让 Travis CI 自动部署上去。无论是 Hexo 的官方文档还是网上帖子甚至 Github 官方的某些页面，都是说让 Travis 把 master 先 build 再推送到 gh-pages 分支，再把 Github Pages 的 Source 设成 gh-pages 分支就可以了，但是现在（2019.10）完全不行。不知道 Github 什么时候把这个改了，个人主页只能用 master 分支显示，不能设置成其他分支或目录，之前用 gh-pages 分支的博客全部变成“404” :-(。
 
-
+<!-- more -->
 
 既然如此，逆向思维，让 Travis CI 逆转一下，在 repository 上从其他分支推送到 master 分支不就可以了吗？
 
