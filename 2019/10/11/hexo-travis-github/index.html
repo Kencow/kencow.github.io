@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Travis CI 自动部署 Hexo 博客到 Github Pages | Kencow Space</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近开始在 Github Pages 上写博客，试用了几种博客框架（Hugo / Hexo / Pelican），发现在列表里如果有代码块的话，Hugo / Pelican 生成的页面会把下一个列表数字重置为1，解决办法是把代码块加4个空格缩进，有点麻烦。我是在 Mac 下用 Typora 写  Markdown 的，Hexo 能完美匹配它输出的效果，默认主题也舒服，所以最后选了 Hexo。 He">
+<meta name="keywords" content="Travis,Hexo,Github">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Travis CI 自动部署 Hexo 博客到 Github Pages">
+<meta property="og:url" content="https://kencow.github.io/2019/10/11/hexo-travis-github/index.html">
+<meta property="og:site_name" content="Kencow Space">
+<meta property="og:description" content="最近开始在 Github Pages 上写博客，试用了几种博客框架（Hugo / Hexo / Pelican），发现在列表里如果有代码块的话，Hugo / Pelican 生成的页面会把下一个列表数字重置为1，解决办法是把代码块加4个空格缩进，有点麻烦。我是在 Mac 下用 Typora 写  Markdown 的，Hexo 能完美匹配它输出的效果，默认主题也舒服，所以最后选了 Hexo。 He">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-11T08:32:43.077Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Travis CI 自动部署 Hexo 博客到 Github Pages">
+<meta name="twitter:description" content="最近开始在 Github Pages 上写博客，试用了几种博客框架（Hugo / Hexo / Pelican），发现在列表里如果有代码块的话，Hugo / Pelican 生成的页面会把下一个列表数字重置为1，解决办法是把代码块加4个空格缩进，有点麻烦。我是在 Mac 下用 Typora 写  Markdown 的，Hexo 能完美匹配它输出的效果，默认主题也舒服，所以最后选了 Hexo。 He">
+  
+    <link rel="alternate" href="/atom.xml" title="Kencow Space" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Kencow Space</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">千亿星辰 床下浮尘</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kencow.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hexo-travis-github" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/11/hexo-travis-github/" class="article-date">
+  <time datetime="2019-10-11T01:52:35.000Z" itemprop="datePublished">2019-10-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Travis CI 自动部署 Hexo 博客到 Github Pages
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近开始在 Github Pages 上写博客，试用了几种博客框架（Hugo / Hexo / Pelican），发现在列表里如果有代码块的话，Hugo / Pelican 生成的页面会把下一个列表数字重置为1，<a href="https://stackoverflow.com/questions/18088955/markdown-continue-numbered-list" target="_blank" rel="noopener">解决办法</a>是把代码块加4个空格缩进，有点麻烦。我是在 Mac 下用 Typora 写  Markdown 的，Hexo 能完美匹配它输出的效果，默认主题也舒服，所以最后选了 Hexo。</p>
+<p>Hexo 安装好了，Github Pages 也创建好了，按照 Hexo 的官方文档还想让 Travis CI 自动部署上去。无论是 Hexo 的官方文档还是网上帖子甚至 Github 官方的某些页面，都是说让 Travis 把 master 先 build 再推送到 gh-pages 分支，再把 Github Pages 的 Source 设成 gh-pages 分支就可以了，但是现在（2019.10）完全不行。不知道 Github 什么时候把这个改了，个人主页只能用 master 分支显示，不能设置成其他分支或目录，之前用 gh-pages 分支的博客全部变成“404” :-(。</p>
+<a id="more"></a>
+
+<p>既然如此，逆向思维，让 Travis CI 逆转一下，在 repository 上从其他分支推送到 master 分支不就可以了吗？</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li><p>按照 Hexo 的<a href="https://hexo.io/zh-cn/docs/github-pages" target="_blank" rel="noopener">官方文档</a>（<strong>步骤 1～7</strong>），先在 Github 上建好 <code>&lt;yourname&gt;.github.io</code> 的 repository，用 Github 账号注册并登录 Travis CI，配置好 Travis CI 在 Github 的权限和 Token；</p>
+</li>
+<li><p>在本地电脑上创建 Hexo 站点目录 <code>my-site</code>；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init my-site</span><br><span class="line"><span class="built_in">cd</span> my-site</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <code>my-site</code> 里新建 <strong>.travis.yml</strong> 文件（<a href="https://docs.travis-ci.com/user/deployment/pages/" target="_blank" rel="noopener">参数说明</a>），这里使用 <code>hexo</code> 作为博客的源码分支，让 Travis 自动调用 hexo 生成静态页面，最后推送到 <code>master</code> 分支；</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sudo:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">node_js</span></span><br><span class="line"><span class="attr">node_js:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="number">10</span> </span><br><span class="line"><span class="attr">cache:</span> <span class="string">npm</span></span><br><span class="line"><span class="attr">branches:</span></span><br><span class="line"><span class="attr">  only:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">hexo</span> <span class="comment"># 当hexo分支有新的commit时执行 </span></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">hexo</span> <span class="string">generate</span> </span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  provider:</span> <span class="string">pages</span></span><br><span class="line"><span class="attr">  skip-cleanup:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  local-dir:</span> <span class="string">public</span></span><br><span class="line"><span class="attr">  target-branch:</span> <span class="string">master</span> <span class="comment"># 注意这里是部署到master, 默认是到gh-pages</span></span><br><span class="line"><span class="attr">  github-token:</span> <span class="string">$GH_TOKEN</span></span><br><span class="line"><span class="attr">  keep-history:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  on:</span></span><br><span class="line"><span class="attr">    branch:</span> <span class="string">hexo</span> <span class="comment"># 博客的源码分支</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 my-site 目录里初始化本地 git，关联远程 repository，把本地 <code>master</code> 推送到远程 <code>hexo</code> 分支；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"init hexo"</span></span><br><span class="line">git remote add origin https://github.com/&lt;yourname&gt;/&lt;yourname&gt;.github.io.git</span><br><span class="line">git push origin master:hexo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建一条博客，从本地的 <code>master</code> 推送到远程的 <code>hexo</code>；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"hello world"</span> <span class="comment"># 生成在 source/_post/ 下，用你喜欢的MD编辑器吧</span></span><br><span class="line">git push origin master:hexo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如无意外，等一会儿就能在<code>&lt;yourname&gt;.github.io</code>看到你新建的博客页面。可以到 Travis CI 的 Dashborad 里查看自动部署是否成功，检查 Job log。Travis 会自动 build 默认的 master 分支，而我们的 master 是没有 .travis.yml 文件的，也不需要它去 build，所以它会 failed 一次，扎眼，<del>暂时找不到办法解决</del>，我就在远程 master 下创建一个什么都不干的 <strong>.travis.yml</strong> 文件：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">language:</span> <span class="string">python</span></span><br><span class="line"><span class="attr">script:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>让 travis 自动跑一遍，master 的状态自然就 “绿” 了，这文件之后当然会被 <code>hexo</code> 更新推送所冲掉，无所谓了。</p>
+</li>
+<li><p>顺便写个<code>push.sh</code>脚本一键推送吧：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">dt=<span class="string">"Post at "</span>`date <span class="string">"+%Y-%m-%d %H:%M:%S"</span>`</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"<span class="variable">$dt</span>"</span></span><br><span class="line">git push origin master:hexo</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<p>至此，终于可以愉快地开始写 blog 了，共勉之～～</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><h5 id="Github-Pages-三-：使用Hexo博客生成工具"><a href="#Github-Pages-三-：使用Hexo博客生成工具" class="headerlink" title="Github Pages(三)：使用Hexo博客生成工具"></a><a href="https://hans2936.github.io/2018/06/06/HexoLog/" target="_blank" rel="noopener">Github Pages(三)：使用Hexo博客生成工具</a></h5></li>
+<li><h5 id="Blog自动部署实践-Hugo-Travis-CI-gt-GitHub-Pages"><a href="#Blog自动部署实践-Hugo-Travis-CI-gt-GitHub-Pages" class="headerlink" title="Blog自动部署实践: Hugo + Travis CI -&gt; GitHub Pages"></a><a href="https://blog.yuantops.com/tech/hugo-travis-ci-auto-deploy-to-gh-pages/" target="_blank" rel="noopener">Blog自动部署实践: Hugo + Travis CI -&gt; GitHub Pages</a></h5></li>
+<li><h5 id="持续集成服务-Travis-CI-教程"><a href="#持续集成服务-Travis-CI-教程" class="headerlink" title="持续集成服务 Travis CI 教程"></a><a href="http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html" target="_blank" rel="noopener">持续集成服务 Travis CI 教程</a></h5></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kencow.github.io/2019/10/11/hexo-travis-github/" data-id="ck1m1nblk0003qubym9w350jr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Travis/">Travis</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/10/08/macos-cron-reminder-and-calender-event/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">如何在 MacOS 定时创建提醒事项和日历日程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/思考/">思考</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Travis/">Travis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cron/">cron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macos/">macos</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Travis/" style="font-size: 10px;">Travis</a> <a href="/tags/cron/" style="font-size: 10px;">cron</a> <a href="/tags/macos/" style="font-size: 10px;">macos</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/11/hexo-travis-github/">Travis CI 自动部署 Hexo 博客到 Github Pages</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/08/macos-cron-reminder-and-calender-event/">如何在 MacOS 定时创建提醒事项和日历日程</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/08/Just-Another-Beginning/">Just Another Beginning</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Kencow<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

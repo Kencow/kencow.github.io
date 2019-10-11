@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Kencow Space</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="keywords" content="python mac develop">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kencow Space">
+<meta property="og:url" content="https://kencow.github.io/index.html">
+<meta property="og:site_name" content="Kencow Space">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kencow Space">
+  
+    <link rel="alternate" href="/atom.xml" title="Kencow Space" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Kencow Space</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">千亿星辰 床下浮尘</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kencow.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-hexo-travis-github" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/11/hexo-travis-github/" class="article-date">
+  <time datetime="2019-10-11T01:52:35.000Z" itemprop="datePublished">2019-10-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/11/hexo-travis-github/">Travis CI 自动部署 Hexo 博客到 Github Pages</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近开始在 Github Pages 上写博客，试用了几种博客框架（Hugo / Hexo / Pelican），发现在列表里如果有代码块的话，Hugo / Pelican 生成的页面会把下一个列表数字重置为1，<a href="https://stackoverflow.com/questions/18088955/markdown-continue-numbered-list" target="_blank" rel="noopener">解决办法</a>是把代码块加4个空格缩进，有点麻烦。我是在 Mac 下用 Typora 写  Markdown 的，Hexo 能完美匹配它输出的效果，默认主题也舒服，所以最后选了 Hexo。</p>
+<p>Hexo 安装好了，Github Pages 也创建好了，按照 Hexo 的官方文档还想让 Travis CI 自动部署上去。无论是 Hexo 的官方文档还是网上帖子甚至 Github 官方的某些页面，都是说让 Travis 把 master 先 build 再推送到 gh-pages 分支，再把 Github Pages 的 Source 设成 gh-pages 分支就可以了，但是现在（2019.10）完全不行。不知道 Github 什么时候把这个改了，个人主页只能用 master 分支显示，不能设置成其他分支或目录，之前用 gh-pages 分支的博客全部变成“404” :-(。</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/10/11/hexo-travis-github/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kencow.github.io/2019/10/11/hexo-travis-github/" data-id="ck1m1nblk0003qubym9w350jr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Travis/">Travis</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-macos-cron-reminder-and-calender-event" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/08/macos-cron-reminder-and-calender-event/" class="article-date">
+  <time datetime="2019-10-08T09:33:56.000Z" itemprop="datePublished">2019-10-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/08/macos-cron-reminder-and-calender-event/">如何在 MacOS 定时创建提醒事项和日历日程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br>
+
+<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><hr>
+<h4 id="在-MacOS-下用定时任务来创建一个提醒事项，通过-iCloud-同步并即时显示在-iPhone-上。"><a href="#在-MacOS-下用定时任务来创建一个提醒事项，通过-iCloud-同步并即时显示在-iPhone-上。" class="headerlink" title="在 MacOS 下用定时任务来创建一个提醒事项，通过 iCloud 同步并即时显示在 iPhone 上。"></a>在 MacOS 下用定时任务来创建一个提醒事项，通过 iCloud 同步并即时显示在 iPhone 上。</h4><br>
+
+<h2 id="方法一：通过-cron-服务执行-AppleScript"><a href="#方法一：通过-cron-服务执行-AppleScript" class="headerlink" title="方法一：通过 cron 服务执行 AppleScript"></a>方法一：通过 cron 服务执行 AppleScript</h2><hr>
+        
+          <p class="article-more-link">
+            <a href="/2019/10/08/macos-cron-reminder-and-calender-event/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kencow.github.io/2019/10/08/macos-cron-reminder-and-calender-event/" data-id="ck1m1nble0001quby3uqtenrv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cron/">cron</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/macos/">macos</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Just-Another-Beginning" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/08/Just-Another-Beginning/" class="article-date">
+  <time datetime="2019-10-08T09:20:33.000Z" itemprop="datePublished">2019-10-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/思考/">思考</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/08/Just-Another-Beginning/">Just Another Beginning</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天是公元二零一九年十月八日，离我上一篇正式的博文已经过去六年多。</p>
+<p>短短六年，跌宕起伏，颠沛流离，物是人非，斗转星移。</p>
+<p>从今天开始，再次拿起键盘，记录人生。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kencow.github.io/2019/10/08/Just-Another-Beginning/" data-id="ck1m1nbla0000qubyc67fh7ek" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/思考/">思考</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Travis/">Travis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cron/">cron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macos/">macos</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Travis/" style="font-size: 10px;">Travis</a> <a href="/tags/cron/" style="font-size: 10px;">cron</a> <a href="/tags/macos/" style="font-size: 10px;">macos</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/11/hexo-travis-github/">Travis CI 自动部署 Hexo 博客到 Github Pages</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/08/macos-cron-reminder-and-calender-event/">如何在 MacOS 定时创建提醒事项和日历日程</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/08/Just-Another-Beginning/">Just Another Beginning</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Kencow<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
