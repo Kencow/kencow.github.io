@@ -2,9 +2,9 @@
 title: Travis CI 自动部署 Hexo 博客到 Github Pages
 date: 2019-10-11 09:52:35
 tags: 
--Travis 
--Hexo 
--Github
+- Travis 
+- Hexo 
+- Github
 Categories: 
 - 技术
 ---
