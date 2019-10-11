@@ -70,8 +70,18 @@ Hexo 安装好了，Github Pages 也创建好了，按照 Hexo 的官方文档�
    git push origin master:hexo
    ```
 
-6.  如无意外，等一会儿就能在`<yourname>.github.io`看到你新建的博客页面。可以到 Travis CI 的 Dashborad 里查看自动部署是否成功，检查 Job log。问题是 Travis 会自动 build 默认的 master 分支，而我们的 master 是没有 .travis.yml 文件的，也不需要它去 build，所以它会 failed 一次，扎眼，暂时找不到办法解决。
+6.  如无意外，等一会儿就能在`<yourname>.github.io`看到你新建的博客页面。可以到 Travis CI 的 Dashborad 里查看自动部署是否成功，检查 Job log。Travis 会自动 build 默认的 master 分支，而我们的 master 是没有 .travis.yml 文件的，也不需要它去 build，所以它会 failed 一次，扎眼，暂时找不到办法解决。
 
+7. 顺便写个脚本一键推送吧：
 
+   ```bash
+   #!/bin/bash
+   dt="Post at "`date "+%Y-%m-%d %H:%M:%S"`
+   git add .
+   git commit -m "$dt"
+   git push origin master:hexo
+   ```
 
-至此，终于又可以愉快地写 blog 了，共勉～～
+   
+
+至此，终于可以开始愉快地写 blog 了，共勉～～
