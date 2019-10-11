@@ -5,8 +5,7 @@ tags:
 - Travis 
 - Hexo 
 - Github
-Categories: 
-- 技术
+categories: 技术
 ---
 
 

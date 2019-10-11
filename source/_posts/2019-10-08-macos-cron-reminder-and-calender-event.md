@@ -1,7 +1,9 @@
 ---
 title: 如何在 MacOS 定时创建提醒事项和日历日程
 date: 2019-10-08 17:33:56
-tags: macos
+tags: 
+- macos
+- cron
 categories: 技术
 ---
 
