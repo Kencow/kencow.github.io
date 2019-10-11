@@ -7,7 +7,7 @@ Categories: 技术
 
 
 
-最近开始在 Github Pages 上写博客，试用了几种博客框架（Hugo / Hexo / Pelican），发现在数字列表里如果有代码块的话，Hugo / Pelican 会把下一个列表数字重置为1，[解决办法](https://stackoverflow.com/questions/18088955/markdown-continue-numbered-list)是把代码块加4个空格缩进，而我是在 Mac 下用 Typora 写  Markdown 的，只有 Hexo 才能完美匹配输出的效果，所以最后选了 Hexo。
+最近开始在 Github Pages 上写博客，试用了几种博客框架（Hugo / Hexo / Pelican），发现在列表里如果有代码块的话，Hugo / Pelican 生成的页面会把下一个列表数字重置为1，[解决办法](https://stackoverflow.com/questions/18088955/markdown-continue-numbered-list)是把代码块加4个空格缩进，有点麻烦。我是在 Mac 下用 Typora 写  Markdown 的，Hexo 能完美匹配它输出的效果，默认主题也舒服，所以最后选了 Hexo。
 
 
 
@@ -70,7 +70,14 @@ Hexo 安装好了，Github Pages 也创建好了，按照 Hexo 的官方文档�
    git push origin master:hexo
    ```
 
-6.  如无意外，等一会儿就能在`<yourname>.github.io`看到你新建的博客页面。可以到 Travis CI 的 Dashborad 里查看自动部署是否成功，检查 Job log。Travis 会自动 build 默认的 master 分支，而我们的 master 是没有 .travis.yml 文件的，也不需要它去 build，所以它会 failed 一次，扎眼，暂时找不到办法解决。
+6.  如无意外，等一会儿就能在`<yourname>.github.io`看到你新建的博客页面。可以到 Travis CI 的 Dashborad 里查看自动部署是否成功，检查 Job log。Travis 会自动 build 默认的 master 分支，而我们的 master 是没有 .travis.yml 文件的，也不需要它去 build，所以它会 failed 一次，扎眼，~~暂时找不到办法解决~~，我就在远程 master 下创建一个什么都不干的 **.travis.yml** 文件：
+
+   ```yaml
+   language: python
+   script: true
+   ```
+
+   让 travis 自动跑一遍，master 的状态自然就 “绿” 了，这文件之后当然会被 `hexo` 更新推送所冲掉，无所谓了。
 
 7. 顺便写个脚本一键推送吧：
 
@@ -84,4 +91,4 @@ Hexo 安装好了，Github Pages 也创建好了，按照 Hexo 的官方文档�
 
    
 
-至此，终于可以开始愉快地写 blog 了，共勉～～
+至此，终于可以愉快地开始写 blog 了，共勉之～～
