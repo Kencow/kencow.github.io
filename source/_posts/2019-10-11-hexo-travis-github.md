@@ -17,7 +17,7 @@ Hexo 安装好了，Github Pages 也创建好了，按照 Hexo 的官方文档�
 
 既然如此，逆向思维，让 Travis CI 逆转一下，在 repository 上从其他分支推送到 master 分支不就可以了吗？
 
-
+### 步骤
 
 1. 按照 Hexo 的[官方文档](https://hexo.io/zh-cn/docs/github-pages)（**步骤 1～7**），先在 Github 上建好 `<yourname>.github.io` 的 repository，用 Github 账号注册并登录 Travis CI，配置好 Travis CI 在 Github 的权限和 Token；
 
@@ -92,3 +92,13 @@ Hexo 安装好了，Github Pages 也创建好了，按照 Hexo 的官方文档�
    
 
 至此，终于可以愉快地开始写 blog 了，共勉之～～
+
+
+
+### 参考
+
+- ##### [Github Pages(三)：使用Hexo博客生成工具](https://hans2936.github.io/2018/06/06/HexoLog/)
+
+- ##### [Blog自动部署实践: Hugo + Travis CI -> GitHub Pages](https://blog.yuantops.com/tech/hugo-travis-ci-auto-deploy-to-gh-pages/)
+
+- ##### [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)
