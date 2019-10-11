@@ -105,3 +105,13 @@ Hexo 安装好了，Github Pages 也创建好了，按照 Hexo 的官方文档�
 - ##### [Blog自动部署实践: Hugo + Travis CI -> GitHub Pages](https://blog.yuantops.com/tech/hugo-travis-ci-auto-deploy-to-gh-pages/)
 
 - ##### [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)
+
+
+### 还有
+* 想省事的话，可以不用 Travis CI，直接用 Hexo 自带的 `hexo clean && hexo deplaoy` 命令部署上去, _config.yml 这样写
+``` yaml
+deploy:
+  type: git
+  repository: https://github.com/<yourname>/<yourname>.github.io.git
+  branch: master
+```
