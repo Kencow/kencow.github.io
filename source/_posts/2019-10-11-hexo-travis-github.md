@@ -21,7 +21,7 @@ Hexo 安装好了，Github Pages 也创建好了，按照 Hexo 的官方文档�
 
 1. 按照 Hexo 的[官方文档](https://hexo.io/zh-cn/docs/github-pages)（**步骤 1～7**），先在 Github 上建好 `<yourname>.github.io` 的 repository，用 Github 账号注册并登录 Travis CI，配置好 Travis CI 在 Github 的权限和 Token；
 
-2. 在本地电脑上创建 Hexo 站点；
+2. 在本地电脑上创建 Hexo 站点目录 `my-site`；
 
    ```bash
    hexo init my-site
@@ -29,7 +29,7 @@ Hexo 安装好了，Github Pages 也创建好了，按照 Hexo 的官方文档�
    npm install
    ```
 
-3. 在 my-site 目录里新建 **.travis.yml** 文件（[参数说明](https://docs.travis-ci.com/user/deployment/pages/)），这里使用 `hexo` 作为博客的源码分支，让 Travis 自动调用 hexo 生成静态页面，最后推送到 `master` 分支；
+3. 在 `my-site` 里新建 **.travis.yml** 文件（[参数说明](https://docs.travis-ci.com/user/deployment/pages/)），这里使用 `hexo` 作为博客的源码分支，让 Travis 自动调用 hexo 生成静态页面，最后推送到 `master` 分支；
 
    ```yaml
    sudo: false
