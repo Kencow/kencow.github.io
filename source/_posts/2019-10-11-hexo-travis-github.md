@@ -82,7 +82,7 @@ Hexo 安装好了，Github Pages 也创建好了，按照 Hexo 的官方文档�
 
    让 travis 自动跑一遍，master 的状态自然就 “绿” 了，这文件之后当然会被 `hexo` 更新推送所冲掉，无所谓了。
 
-7. 顺便写个脚本一键推送吧：
+7. 顺便写个`push.sh`脚本一键推送吧：
 
    ```bash
    #!/bin/bash
