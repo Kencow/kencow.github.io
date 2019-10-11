@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Kencow Space">
 <meta property="og:description" content="最近开始在 Github Pages 上写博客，试用了几种博客框架（Hugo / Hexo / Pelican），发现在列表里如果有代码块的话，Hugo / Pelican 生成的页面会把下一个列表数字重置为1，解决办法是把代码块加4个空格缩进，有点麻烦。我是在 Mac 下用 Typora 写  Markdown 的，Hexo 能完美匹配它输出的效果，默认主题也舒服，所以最后选了 Hexo。 He">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-11T11:50:16.368Z">
+<meta property="og:updated_time" content="2019-10-11T12:42:59.022Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Travis CI 自动部署 Hexo 博客到 Github Pages">
 <meta name="twitter:description" content="最近开始在 Github Pages 上写博客，试用了几种博客框架（Hugo / Hexo / Pelican），发现在列表里如果有代码块的话，Hugo / Pelican 生成的页面会把下一个列表数字重置为1，解决办法是把代码块加4个空格缩进，有点麻烦。我是在 Mac 下用 Typora 写  Markdown 的，Hexo 能完美匹配它输出的效果，默认主题也舒服，所以最后选了 Hexo。 He">
@@ -123,11 +123,8 @@
 <li><p>顺便写个<code>push.sh</code>脚本一键推送吧：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">dt=<span class="string">"Post at "</span>`date <span class="string">"+%Y-%m-%d %H:%M:%S"</span>`</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"<span class="variable">$dt</span>"</span></span><br><span class="line">git push origin master:hexo</span><br></pre></td></tr></table></figure>
 
-
-
 </li>
 </ol>
-<p>至此，终于可以愉快地开始写 blog 了，共勉之～～</p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
 <li><h5 id="Github-Pages-三-：使用Hexo博客生成工具"><a href="#Github-Pages-三-：使用Hexo博客生成工具" class="headerlink" title="Github Pages(三)：使用Hexo博客生成工具"></a><a href="https://hans2936.github.io/2018/06/06/HexoLog/" target="_blank" rel="noopener">Github Pages(三)：使用Hexo博客生成工具</a></h5></li>
 <li><h5 id="Blog自动部署实践-Hugo-Travis-CI-gt-GitHub-Pages"><a href="#Blog自动部署实践-Hugo-Travis-CI-gt-GitHub-Pages" class="headerlink" title="Blog自动部署实践: Hugo + Travis CI -&gt; GitHub Pages"></a><a href="https://blog.yuantops.com/tech/hugo-travis-ci-auto-deploy-to-gh-pages/" target="_blank" rel="noopener">Blog自动部署实践: Hugo + Travis CI -&gt; GitHub Pages</a></h5></li>
@@ -138,11 +135,12 @@
 
 </li>
 </ul>
+<p>至此，终于可以愉快地开始写 blog 了，共勉之～～</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kencow.github.io/2019/10/11/hexo-travis-github/" data-id="ck1m4dyqs00018dby9ifrmbbr" class="article-share-link">Share</a>
+      <a data-url="https://kencow.github.io/2019/10/11/hexo-travis-github/" data-id="ck1m4g6f1000391byl3fl55pd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Travis/">Travis</a></li></ul>
