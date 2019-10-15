@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+
+  
+  <title>寻找质数（ Python / Go ） | Kencow Space</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="定义 质数（素数），指在大于 1 的自然数中，除了 1 和该数自身外，无法被其他自然数整除的数（如 2，3，5，7，11 ……）。   埃拉托斯特尼筛法 埃拉托斯特尼（Eratosthenes）是一位古希腊数学家、地理学家、历史学家、诗人、天文学家，跟阿基米德是好基友。除了发明寻找质数的方法，他还测量地球周长、日地间距、地月间距，编排星图，绘制地图，把名字写在月球上（后人追封 埃拉托斯特尼陨石">
+<meta name="keywords" content="python,go,prime number">
+<meta property="og:type" content="article">
+<meta property="og:title" content="寻找质数（ Python &#x2F; Go ）">
+<meta property="og:url" content="https://kencow.github.io/2019/10/15/prime-number/index.html">
+<meta property="og:site_name" content="Kencow Space">
+<meta property="og:description" content="定义 质数（素数），指在大于 1 的自然数中，除了 1 和该数自身外，无法被其他自然数整除的数（如 2，3，5，7，11 ……）。   埃拉托斯特尼筛法 埃拉托斯特尼（Eratosthenes）是一位古希腊数学家、地理学家、历史学家、诗人、天文学家，跟阿基米德是好基友。除了发明寻找质数的方法，他还测量地球周长、日地间距、地月间距，编排星图，绘制地图，把名字写在月球上（后人追封 埃拉托斯特尼陨石">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://kencow.github.io/2019/10/15/prime-number/Eratosthenes.jpeg">
+<meta property="og:image" content="https://kencow.github.io/2019/10/15/prime-number/sieveofEratosthenes.gif">
+<meta property="og:updated_time" content="2019-10-15T09:00:21.342Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="寻找质数（ Python &#x2F; Go ）">
+<meta name="twitter:description" content="定义 质数（素数），指在大于 1 的自然数中，除了 1 和该数自身外，无法被其他自然数整除的数（如 2，3，5，7，11 ……）。   埃拉托斯特尼筛法 埃拉托斯特尼（Eratosthenes）是一位古希腊数学家、地理学家、历史学家、诗人、天文学家，跟阿基米德是好基友。除了发明寻找质数的方法，他还测量地球周长、日地间距、地月间距，编排星图，绘制地图，把名字写在月球上（后人追封 埃拉托斯特尼陨石">
+<meta name="twitter:image" content="https://kencow.github.io/2019/10/15/prime-number/Eratosthenes.jpeg">
+  
+    <link rel="alternate" href="/atom.xml" title="Kencow Space" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+</html>
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Kencow Space</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">千亿星辰 床下浮尘</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://kencow.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-prime-number" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/15/prime-number/" class="article-date">
+  <time datetime="2019-10-15T00:51:27.000Z" itemprop="datePublished">2019-10-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      寻找质数（ Python / Go ）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <br>
+
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><hr>
+<p><strong>质数</strong>（素数），指在大于 1 的自然数中，除了 1 和该数自身外，无法被其他自然数整除的数（如 2，3，5，7，11 ……）。</p>
+<br>
+
+<h2 id="埃拉托斯特尼筛法"><a href="#埃拉托斯特尼筛法" class="headerlink" title="埃拉托斯特尼筛法"></a>埃拉托斯特尼筛法</h2><hr>
+<p><strong>埃拉托斯特尼</strong>（Eratosthenes）是一位古希腊数学家、地理学家、历史学家、诗人、天文学家，跟阿基米德是好<em>基</em>友。除了发明寻找质数的方法，他还测量地球周长、日地间距、地月间距，编排星图，绘制地图，把名字写在月球上（后人追封 <u>埃拉托斯特尼陨石坑</u>）。</p>
+<img src="/2019/10/15/prime-number/Eratosthenes.jpeg" title="牛人一牛就是几千年">
+
+<a id="more"></a>
+
+<p><strong>埃拉托斯特尼筛法</strong>（sieve of Eratosthenes ）用来找出一定范围（n）内的所有质数。其方法是从 2 开始，在$\sqrt{n}$ 以内，将每个质数的倍数剔除掉，剩下的就是所求范围的质数。例如找 100 以内的质数，先把 2 的倍数筛掉（保留 2），再把 3 的倍数筛掉（保留 3），如此重复下去，直到 7 的倍数被筛掉后（因为下一个质数 11 已经大于$\sqrt{100}$ )，剩下的数就是 100 以内的质数。</p>
+<img src="/2019/10/15/prime-number/sieveofEratosthenes.gif" title="有图有真相">
+
+<br>
+
+<h2 id="一个亿的小目标"><a href="#一个亿的小目标" class="headerlink" title="一个亿的小目标"></a>一个亿的小目标</h2><hr>
+<p>王先生说： <strong>“最好先定一个能达到的小目标，比方说我先挣它一个亿”</strong>。挣一个亿，我太难了，不如改成 *<em>”算一个亿“ *</em>吧。下面我们就来算一亿以内的质数，为了方便，最后只输出该范围内质数的个数。</p>
+<h3 id="Python-的实现"><a href="#Python-的实现" class="headerlink" title="Python 的实现"></a>Python 的实现</h3><p><strong>方式一：列表</strong></p>
+<p>先创建一个包含 N+1 个 <code>True</code> 的列表，然后逐步把非质数设为 <code>False</code>，最后剩下 <code>True</code> 的就是质数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">N = <span class="number">100000000</span></span><br><span class="line">primes = [ <span class="literal">True</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(N) ]</span><br><span class="line">primes[:<span class="number">1</span>] = [ <span class="literal">False</span>, <span class="literal">False</span> ]  <span class="comment"># 去掉0和1</span></span><br><span class="line"></span><br><span class="line">k = <span class="number">2</span> </span><br><span class="line"><span class="keyword">while</span> k * k &lt;= N:</span><br><span class="line">    <span class="keyword">if</span> primes[k]:</span><br><span class="line">        j = k * k</span><br><span class="line">        <span class="keyword">while</span> j &lt;= N:</span><br><span class="line">            primes[j] = <span class="literal">False</span></span><br><span class="line">            j += k</span><br><span class="line">    k += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">"&#123;&#125; primes in &#123;&#125;"</span>.format(primes.count(<span class="literal">True</span>), N))</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5761455 primes <span class="keyword">in</span> 100000000</span><br></pre></td></tr></table></figure>
+
+<p>耗时 67 秒。</p>
+<p><strong>方式二：集合</strong></p>
+<p>我们还可以用集合的方式来筛选，先创建一个从 3 到 N 的奇数集合（加上 2），然后每次减去每个质数的倍数的集合，最后得到质数的集合，代码也缩减了一半。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">N = <span class="number">100000000</span></span><br><span class="line">primes = &#123;i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>, N + <span class="number">1</span>, <span class="number">2</span>)&#125; | &#123;<span class="number">2</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">3</span>, int(N ** <span class="number">0.5</span>) + <span class="number">1</span>, <span class="number">2</span>):</span><br><span class="line">    <span class="keyword">if</span> j <span class="keyword">in</span> primes:</span><br><span class="line">        primes -= &#123;i <span class="keyword">for</span> i <span class="keyword">in</span> range(j * j, N + <span class="number">1</span>, j)&#125;</span><br><span class="line"></span><br><span class="line">print(<span class="string">"&#123;&#125; primes in &#123;&#125;:"</span>.format(len(primes), N))</span><br></pre></td></tr></table></figure>
+
+<p>耗时 59 秒，有进步。（ 仿佛听到有人喊： “偷步啊！你从奇数开始筛。“ 答：“是，又怎样😆！” ）</p>
+<p><strong>方式三：函数</strong></p>
+<p>借用 <strong>Wiki</strong> 上 <a href="https://zh.wikipedia.org/zh-hans/埃拉托斯特尼筛法" target="_blank" rel="noopener">埃拉托斯特尼筛法</a> 的 python 代码，发现……</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">eratosthenes</span><span class="params">(n)</span>:</span></span><br><span class="line">     IsPrime = [<span class="literal">True</span>] * (n + <span class="number">1</span>)</span><br><span class="line">     <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>, int(n ** <span class="number">0.5</span>) + <span class="number">1</span>): </span><br><span class="line">         <span class="keyword">if</span> IsPrime[i]:</span><br><span class="line">             <span class="keyword">for</span> j <span class="keyword">in</span> range(i * i, n + <span class="number">1</span>, i): </span><br><span class="line">                 IsPrime[j] = <span class="literal">False</span></span><br><span class="line">     <span class="keyword">return</span> &#123;x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">2</span>, n + <span class="number">1</span>) <span class="keyword">if</span> IsPrime[x]&#125;</span><br><span class="line"></span><br><span class="line">N = <span class="number">100000000</span></span><br><span class="line">primes = eratosthenes(N)</span><br><span class="line">print(<span class="string">"&#123;&#125; primes in &#123;&#125;:"</span>.format(len(primes), N))</span><br></pre></td></tr></table></figure>
+
+<p>耗时一下子降到 26 秒，凭什么啊，如果把函数拆了，耗时会多加 10 秒，暂时没搞懂。</p>
+<h3 id="Go-的实现"><a href="#Go-的实现" class="headerlink" title="Go 的实现"></a>Go 的实现</h3><p>现在算法已经不是问题了，时间才是问题，我要尽快拿到这一个亿。于是我写了一段憋足的Go代码。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    N := <span class="number">100000000</span></span><br><span class="line">    primes := <span class="built_in">make</span>([]<span class="keyword">bool</span>, N+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">2</span>; i &lt;= N; i += <span class="number">1</span> &#123; </span><br><span class="line">        primes[i] = <span class="literal">true</span></span><br><span class="line">    &#125;   </span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> k := <span class="number">2</span>; k*k &lt;= N; k += <span class="number">1</span> &#123; </span><br><span class="line">        <span class="keyword">if</span> primes[k] &#123;</span><br><span class="line">           <span class="keyword">for</span> j := k*k; j &lt;= N; j += k &#123; </span><br><span class="line">               primes[j] = <span class="literal">false</span></span><br><span class="line">           &#125;   </span><br><span class="line">       &#125;   </span><br><span class="line">   &#125;   </span><br><span class="line"></span><br><span class="line">   total := <span class="number">0</span></span><br><span class="line">   <span class="keyword">for</span> i := <span class="number">0</span>; i &lt;= N; i++ &#123;</span><br><span class="line">       <span class="keyword">if</span> primes[i]&#123;</span><br><span class="line">           total += <span class="number">1</span></span><br><span class="line">       &#125;   </span><br><span class="line">   &#125;   </span><br><span class="line">   fmt.Println(total, <span class="string">"primes in"</span>, N)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>go run 一下，1个亿耗时仅 1.5 秒！这速度堪比双十一第1秒的交易额。</p>
+<p>在一个亿面前，Python 被 Go 打得满地找牙，人家毕竟是编译型语言嘛。</p>
+<p>就在这个时候，Python 背后传来一个深沉的声音：“别怕，有我在！”</p>
+<h3 id="Python-primesieve"><a href="#Python-primesieve" class="headerlink" title="Python primesieve"></a>Python primesieve</h3><p>这个背后的声音是 <a href="https://github.com/hickford/primesieve-python" target="_blank" rel="noopener">primesieve-python</a>，一个调用 <a href="https://github.com/kimwalisch/primesieve" target="_blank" rel="noopener">primesieve</a> C++ library 的 Python 模块。</p>
+<p>安装： <code>pip3 install primesieve</code></p>
+<p>少啰嗦，给我上！</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> primesieve</span><br><span class="line">N = <span class="number">100000000</span></span><br><span class="line">prime = primesieve.primes(N)</span><br><span class="line">print(len(prime), <span class="string">"primes in"</span>, N)</span><br></pre></td></tr></table></figure>
+
+<p>1个亿耗时0.6秒！</p>
+<p>如果只需要质数的个数，可以直接调用<code>primesieve.count_primes(N)</code>：</p>
+<p>1个亿只需 0.06 秒，1000个亿也只是 30 秒。</p>
+<p>Python 成功逆袭～</p>
+<br>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><hr>
+<p>趁 Python 得意忘形而 Go 满脸不服的时候，我们总结一下以上各种方法的效率（耗时）。</p>
+<p><strong>系统环境：</strong>MacOS 10.14.4 / Mac mini (2014) / 2.6 GHz Intel Core i5 / 8GB DDR3 / SSD</p>
+<table>
+<thead>
+<tr>
+<th>N</th>
+<th>质数的个数</th>
+<th>Python / 列表</th>
+<th>Python / 集合</th>
+<th>Python / 函数</th>
+<th>Go</th>
+<th>Python / primesieve</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10万</td>
+<td>9592</td>
+<td>0.09s</td>
+<td>0.07s</td>
+<td>0.10s</td>
+<td>0.006s</td>
+<td>0.04s</td>
+</tr>
+<tr>
+<td>100万</td>
+<td>78498</td>
+<td>0.6s</td>
+<td>0.3s</td>
+<td>0.25s</td>
+<td>0.01s</td>
+<td>0.04s</td>
+</tr>
+<tr>
+<td>1000万</td>
+<td>664579</td>
+<td>6.1s</td>
+<td>3.7s</td>
+<td>2.6s</td>
+<td>0.10s</td>
+<td>0.11s</td>
+</tr>
+<tr>
+<td>1亿</td>
+<td>5761455</td>
+<td>1m7s</td>
+<td>54s</td>
+<td>26s</td>
+<td>1.6s</td>
+<td>0.95s</td>
+</tr>
+<tr>
+<td>10亿</td>
+<td>50847534</td>
+<td>我压力太大</td>
+<td>我太难了</td>
+<td>惹不起</td>
+<td>15s</td>
+<td>9.2s</td>
+</tr>
+<tr>
+<td>20亿</td>
+<td>98222287</td>
+<td></td>
+<td></td>
+<td></td>
+<td>32s</td>
+<td>10s</td>
+</tr>
+<tr>
+<td>30亿</td>
+<td>144449537</td>
+<td></td>
+<td></td>
+<td></td>
+<td>53s</td>
+<td>24s</td>
+</tr>
+<tr>
+<td>40亿</td>
+<td>189961812</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1m17s</td>
+<td>44s</td>
+</tr>
+<tr>
+<td>50亿</td>
+<td>234954223</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1m49s</td>
+<td>1m1s</td>
+</tr>
+<tr>
+<td>60亿</td>
+<td>279545368</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2m31s</td>
+<td>1m25s</td>
+</tr>
+<tr>
+<td>100亿</td>
+<td>455052511</td>
+<td></td>
+<td></td>
+<td></td>
+<td>&gt;100m</td>
+<td>以下用 count_primes(n)<br>2s</td>
+</tr>
+<tr>
+<td>200亿</td>
+<td>882206716</td>
+<td></td>
+<td></td>
+<td></td>
+<td>上面的呢？</td>
+<td>5s</td>
+</tr>
+<tr>
+<td>300亿</td>
+<td>1300005926</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>8s</td>
+</tr>
+<tr>
+<td>400亿</td>
+<td>1711955433</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>11s</td>
+</tr>
+<tr>
+<td>500亿</td>
+<td>2119654578</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>14s</td>
+</tr>
+<tr>
+<td>1000亿</td>
+<td>4118054813</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>30s</td>
+</tr>
+</tbody></table>
+<p>（完）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://kencow.github.io/2019/10/15/prime-number/" data-id="ck1rmhc7z00059gbydka0qnmt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go/">go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/prime-number/">prime number</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/10/11/hexo-travis-github/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Travis CI 自动部署 Hexo 博客到 Github Pages</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/15/prime-number/">寻找质数（ Python / Go ）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/11/hexo-travis-github/">Travis CI 自动部署 Hexo 博客到 Github Pages</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/08/macos-cron-reminder-and-calender-event/">如何在 MacOS 定时创建提醒事项和日历日程</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/08/Just-Another-Beginning/">Just Another Beginning</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/思考/">思考</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Travis/">Travis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cron/">cron</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macos/">macos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prime-number/">prime number</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Travis/" style="font-size: 10px;">Travis</a> <a href="/tags/cron/" style="font-size: 10px;">cron</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/macos/" style="font-size: 10px;">macos</a> <a href="/tags/prime-number/" style="font-size: 10px;">prime number</a> <a href="/tags/python/" style="font-size: 10px;">python</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Kencow<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
