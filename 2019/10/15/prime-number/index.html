@@ -5,21 +5,21 @@
   
 
   
-  <title>寻找质数 | Kencow Space</title>
+  <title>如何快速查找质数 | Kencow Space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="MathJax.Hub.Config({ tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]} });       质数（素数），指在大于 1 的自然数中，除了 1 和该数自身外，无法被其他自然数整除的数（如 2，3，5，7，11 ……）。那么，如何能简单快速地找出质数呢？ 埃拉托斯特尼筛法 埃拉托斯特尼（Eratosthenes）是一位古希腊数学家">
 <meta name="keywords" content="python,go,prime number">
 <meta property="og:type" content="article">
-<meta property="og:title" content="寻找质数">
+<meta property="og:title" content="如何快速查找质数">
 <meta property="og:url" content="https://kencow.github.io/2019/10/15/prime-number/index.html">
 <meta property="og:site_name" content="Kencow Space">
 <meta property="og:description" content="MathJax.Hub.Config({ tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]} });       质数（素数），指在大于 1 的自然数中，除了 1 和该数自身外，无法被其他自然数整除的数（如 2，3，5，7，11 ……）。那么，如何能简单快速地找出质数呢？ 埃拉托斯特尼筛法 埃拉托斯特尼（Eratosthenes）是一位古希腊数学家">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://kencow.github.io/2019/10/15/prime-number/Eratosthenes.jpeg">
 <meta property="og:image" content="https://kencow.github.io/2019/10/15/prime-number/sieveofEratosthenes.gif">
-<meta property="og:updated_time" content="2019-10-15T16:18:30.735Z">
+<meta property="og:updated_time" content="2019-10-16T00:52:12.592Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="寻找质数">
+<meta name="twitter:title" content="如何快速查找质数">
 <meta name="twitter:description" content="MathJax.Hub.Config({ tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]} });       质数（素数），指在大于 1 的自然数中，除了 1 和该数自身外，无法被其他自然数整除的数（如 2，3，5，7，11 ……）。那么，如何能简单快速地找出质数呢？ 埃拉托斯特尼筛法 埃拉托斯特尼（Eratosthenes）是一位古希腊数学家">
 <meta name="twitter:image" content="https://kencow.github.io/2019/10/15/prime-number/Eratosthenes.jpeg">
   
@@ -90,7 +90,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      寻找质数
+      如何快速查找质数
     </h1>
   
 
@@ -165,12 +165,12 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
 
 <p>1个亿耗时 <u>0.5 秒</u> ！10个亿 <u>4.5 秒</u> ！</p>
 <p>如果只需要质数的个数，直接调用 <code>primesieve.count_primes(N)</code>，1个亿只需 0.06 秒，1000个亿只需 30 秒。</p>
-<p>Python 借力 C++ 成功逆袭，Go 表示请外援不算好汉～</p>
+<p>Python 成功逆袭，Go 表示请外援不算好汉～</p>
 <br>
 
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><hr>
 <p>最后，我们统计一下以上各种求质数方式的效率（耗时）。</p>
-<p><strong>* 系统环境：</strong>MacOS 10.14.4 / 2.6 GHz Intel Core i5 / 8GB DDR3 / SSD</p>
+<p><strong>* 系统环境：</strong>MacOS 10.14.4 / 2.6 GHz Intel 2-Core i5 / 8GB DDR3 / SSD</p>
 <table>
 <thead>
 <tr>
@@ -222,9 +222,9 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
 <tr>
 <td>10亿</td>
 <td>50847534</td>
+<td>算了吧</td>
 <td>压力太大</td>
 <td>太难了</td>
-<td>不想动</td>
 <td>15s</td>
 <td>4.5s</td>
 </tr>
@@ -333,7 +333,7 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kencow.github.io/2019/10/15/prime-number/" data-id="ck1s1wnlx00042tby0qf4a16y" class="article-share-link">Share</a>
+      <a data-url="https://kencow.github.io/2019/10/15/prime-number/" data-id="ck1ska3cj0003evbyhqlmck6x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go/">go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/prime-number/">prime number</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -366,7 +366,7 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
       <ul>
         
           <li>
-            <a href="/2019/10/15/prime-number/">寻找质数</a>
+            <a href="/2019/10/15/prime-number/">如何快速查找质数</a>
           </li>
         
           <li>
