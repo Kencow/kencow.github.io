@@ -17,7 +17,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://kencow.github.io/2019/10/15/prime-number/Eratosthenes.jpeg">
 <meta property="og:image" content="https://kencow.github.io/2019/10/15/prime-number/sieveofEratosthenes.gif">
-<meta property="og:updated_time" content="2019-10-16T00:52:12.592Z">
+<meta property="og:updated_time" content="2019-10-16T01:04:20.292Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何快速查找质数">
 <meta name="twitter:description" content="MathJax.Hub.Config({ tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]} });       质数（素数），指在大于 1 的自然数中，除了 1 和该数自身外，无法被其他自然数整除的数（如 2，3，5，7，11 ……）。那么，如何能简单快速地找出质数呢？ 埃拉托斯特尼筛法 埃拉托斯特尼（Eratosthenes）是一位古希腊数学家">
@@ -121,13 +121,13 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
 <br>
 
 <h2 id="一个亿的小目标"><a href="#一个亿的小目标" class="headerlink" title="一个亿的小目标"></a>一个亿的小目标</h2><hr>
-<p>王先生说： <strong>“最好先定一个能达到的小目标，比方说我先挣它一个亿”</strong>。挣一个亿，我太难了，不如先 <strong>“算一个亿”</strong>吧。下面我们就来算1亿以内的质数，为了方便，结果只输出该范围内质数的个数。</p>
+<p>王先生说： <strong>“最好先定一个能达到的小目标，比方说我先挣它一个亿”</strong>。挣一个亿，我太难了，不如先 <strong>“算一个亿”</strong>吧。下面我们就用<u>埃拉托斯特尼筛法</u>来找 1 亿以内的质数，为了方便，结果只输出该范围内质数的个数。</p>
 <blockquote>
-<h3 id="Python-的实现"><a href="#Python-的实现" class="headerlink" title="Python 的实现"></a>Python 的实现</h3></blockquote>
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3></blockquote>
 <ul>
 <li>方式一：列表</li>
 </ul>
-<p>先创建一个包含 N+1 个 <code>True</code> 的列表，然后根据埃拉托斯特尼筛法，逐步把非质数设为 <code>False</code>，最后剩下的 <code>True</code> 就是质数。</p>
+<p>先创建一个包含 N+1 个 <code>True</code> 的列表，然后把非质数设为 <code>False</code>，最后剩下的 <code>True</code> 就是质数。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">N = <span class="number">100000000</span></span><br><span class="line">primes = [ <span class="literal">True</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(N) ]</span><br><span class="line">primes[:<span class="number">1</span>] = [ <span class="literal">False</span>, <span class="literal">False</span> ]  <span class="comment"># 去掉0和1</span></span><br><span class="line"></span><br><span class="line">k = <span class="number">2</span> </span><br><span class="line"><span class="keyword">while</span> k * k &lt;= N:</span><br><span class="line">    <span class="keyword">if</span> primes[k]:</span><br><span class="line">        j = k * k</span><br><span class="line">        <span class="keyword">while</span> j &lt;= N:</span><br><span class="line">            primes[j] = <span class="literal">False</span></span><br><span class="line">            j += k</span><br><span class="line">    k += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">"&#123;&#125; primes in &#123;&#125;"</span>.format(primes.count(<span class="literal">True</span>), N))</span><br></pre></td></tr></table></figure>
 
 <p>结果：</p>
@@ -149,11 +149,11 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
 
 <p>耗时一下子降到 <u>26 秒</u>，凭什么啊，如果把函数拆了，会增加 10 秒，暂时没搞懂。</p>
 <blockquote>
-<h3 id="Go-的实现"><a href="#Go-的实现" class="headerlink" title="Go 的实现"></a>Go 的实现</h3></blockquote>
+<h3 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h3></blockquote>
 <p>现在算法已经不是问题，时间才是问题，我要尽快算到一个亿。于是我写了一段憋足的 Go 代码。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    N := <span class="number">100000000</span></span><br><span class="line">    primes := <span class="built_in">make</span>([]<span class="keyword">bool</span>, N+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">2</span>; i &lt;= N; i += <span class="number">1</span> &#123; </span><br><span class="line">        primes[i] = <span class="literal">true</span></span><br><span class="line">    &#125;   </span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> k := <span class="number">2</span>; k*k &lt;= N; k += <span class="number">1</span> &#123; </span><br><span class="line">        <span class="keyword">if</span> primes[k] &#123;</span><br><span class="line">           <span class="keyword">for</span> j := k*k; j &lt;= N; j += k &#123; </span><br><span class="line">               primes[j] = <span class="literal">false</span></span><br><span class="line">           &#125;   </span><br><span class="line">       &#125;   </span><br><span class="line">   &#125;   </span><br><span class="line"></span><br><span class="line">   total := <span class="number">0</span></span><br><span class="line">   <span class="keyword">for</span> i := <span class="number">0</span>; i &lt;= N; i++ &#123;</span><br><span class="line">       <span class="keyword">if</span> primes[i]&#123;</span><br><span class="line">           total += <span class="number">1</span></span><br><span class="line">       &#125;   </span><br><span class="line">   &#125;   </span><br><span class="line">   fmt.Println(total, <span class="string">"primes in"</span>, N)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>go run 一下，1个亿耗时仅 <u>1.5 秒</u>！这速度堪比双十一的第1秒。</p>
+<p>go run 一下，1 个亿耗时仅 <u>1.5 秒</u>！这速度堪比双十一的第 1 秒。</p>
 <p>在一个亿面前，Python 被 Go 打得满地找牙，解释型就是打不过编译型吗？</p>
 <p>这时，Python 背后传来一个坚实的声音：“别怕，有我在！”</p>
 <blockquote>
@@ -163,13 +163,13 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
 <p>少啰嗦，给我上！</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> primesieve</span><br><span class="line">N = <span class="number">100000000</span></span><br><span class="line">prime = primesieve.primes(N)</span><br><span class="line">print(len(prime), <span class="string">"primes in"</span>, N)</span><br></pre></td></tr></table></figure>
 
-<p>1个亿耗时 <u>0.5 秒</u> ！10个亿 <u>4.5 秒</u> ！</p>
-<p>如果只需要质数的个数，直接调用 <code>primesieve.count_primes(N)</code>，1个亿只需 0.06 秒，1000个亿只需 30 秒。</p>
+<p>1 个亿耗时 <u>0.5 秒</u> ！10 个亿 <u>4.5 秒</u> ！</p>
+<p>如果只需要质数的个数，直接调用 <code>primesieve.count_primes(N)</code>，1 亿只需 0.06 秒，1000 亿只需 30 秒。</p>
 <p>Python 成功逆袭，Go 表示请外援不算好汉～</p>
 <br>
 
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><hr>
-<p>最后，我们统计一下以上各种求质数方式的效率（耗时）。</p>
+<p>最后，我们统计一下以上各种求质数方式的效率（耗时）：</p>
 <p><strong>* 系统环境：</strong>MacOS 10.14.4 / 2.6 GHz Intel 2-Core i5 / 8GB DDR3 / SSD</p>
 <table>
 <thead>
@@ -333,7 +333,7 @@ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://kencow.github.io/2019/10/15/prime-number/" data-id="ck1ska3cj0003evbyhqlmck6x" class="article-share-link">Share</a>
+      <a data-url="https://kencow.github.io/2019/10/15/prime-number/" data-id="ck1skoumb0005pnbyqawd5gad" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go/">go</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/prime-number/">prime number</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
